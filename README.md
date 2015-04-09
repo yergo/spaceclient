@@ -2,18 +2,18 @@
 
 It's a quick and lazy attempt to create an Node.js Web-Socket based space-like canvas for multiple users.
 
-# Installation
+## Installation
 
-```
-	git clone https://github.com/yergo/spaceclient.git
-	cd server
-	npm install
+```bash
+git clone https://github.com/yergo/spaceclient.git
+cd server
+npm install
 ```
 
-# Start
+## Start
 
 Start socket server with:
 
-```
-    node server/server.js &
+```bash
+node server/server.js &
 ```
