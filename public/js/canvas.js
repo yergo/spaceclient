@@ -51,7 +51,7 @@ var Canvas = function() {
 
 		Timer(function() {
 			cv.redraw();
-		}, 1000/60);
+		}, 1000/30);
 	};
 
 	cv.active = function () {
