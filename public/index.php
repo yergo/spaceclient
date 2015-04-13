@@ -1,6 +1,6 @@
 <html>
     <head>
-
+	<script src ="https://cdnjs.cloudflare.com/ajax/libs/three.js/r71/three.min.js"></script>
 <?php
 	
 	$assets = [
@@ -9,7 +9,8 @@
 		['js', 'jquery-2.1.3.min'],
 		['js', 'socket.io-1.3.4'],
 		['js', 'timeout'],
-		['js', 'canvas'],
+		['js', 'scene'],
+//		['js', 'canvas'],
 		['js', 'client'],
 		['js', 'mersenne_twister'],
 		['js', 'prng'],
@@ -37,23 +38,27 @@
 		
     </head>
     <body>
-		<canvas id="canvas"></canvas>
+		
     </body>
 
     <script>
-		canvas = new Canvas();
-		client = new Client();
-		
-		client.connect();
-		client.installEvent('connect', canvas.active);
-		client.installEvent('disconnect', canvas.inactive);
-		
-		gl = new Galaxy();
-		gl.generate(canvas);
-		
-	    window.addEventListener('resize', canvas.resizeCanvas, false);
-		canvas.resizeCanvas();
-		canvas.redraw();
+
+		scene = new Scene();
+		scene.setEvents();
+
+//		canvas = new Canvas();
+//		client = new Client();
+//		
+//		client.connect();
+//		client.installEvent('connect', canvas.active);
+//		client.installEvent('disconnect', canvas.inactive);
+//		
+//		gl = new Galaxy();
+//		gl.generate(canvas);
+//		
+//	    window.addEventListener('resize', canvas.resizeCanvas, false);
+//		canvas.resizeCanvas();
+//		canvas.redraw();
 		
     </script>
 </html>
