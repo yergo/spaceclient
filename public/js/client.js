@@ -6,7 +6,7 @@ var Client = function () {
 	cli.connect = function() {
 		
 		var config = {
-			'url' : 'riddick.local',
+			'url' : window.location.host,
 			'port' : '3001'
 		};
 		
