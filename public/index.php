@@ -12,6 +12,7 @@
 		['js', 'client'],
 		['js', 'mersenne_twister'],
 		['js', 'prng'],
+//		['js', 'star'],
 		['js', 'galaxy'],
 	];
 	
@@ -45,5 +46,12 @@
 		client.connect();
 		client.installEvent('connect', canvas.active);
 		client.installEvent('disconnect', canvas.inactive);
+		
+		gl = new Galaxy();
+		gl.generate(canvas);
+		
+	    window.addEventListener('resize', canvas.resizeCanvas, false);
+		canvas.resizeCanvas();
+		
     </script>
 </html>

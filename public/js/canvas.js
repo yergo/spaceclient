@@ -5,15 +5,40 @@ var Canvas = function() {
 
     cv.canvas  = document.getElementById('canvas');
     cv.context = cv.canvas.getContext('2d');
+	
+	cv.objects = [];
+	cv.timer = false;
 
     cv.resizeCanvas = function () {
 		cv.canvas.width = window.innerWidth;
 		cv.canvas.height = window.innerHeight;
-		console.log('resizing');
+		cv.timer = cv.timer === false && setTimeout(function() {
+			cv.redraw();
+			cv.timer = false;
+			console.log('redrawing');
+		}, 1000/60);
     };
 
-    window.addEventListener('resize', cv.resizeCanvas, false);
-    cv.resizeCanvas();
+	cv.redraw = function() {
+		cv.context.save();
+		cv.context.clearRect(0, 0, canvas.width, canvas.height);
+		cv.context.globalAlpha=1;
+		
+		g = {
+			radius: 300,
+			scale: this.canvas.height/600,
+			x: cv.canvas.width/2,
+			y: cv.canvas.height/2
+		};
+		
+		
+		for(i in cv.objects) {
+			obj = cv.objects[i];
+			obj.render(cv.canvas, cv.context);
+		}
+		
+		cv.context.restore();
+	};
 
 	cv.active = function () {
 		$(cv.canvas).addClass('active');
@@ -21,5 +46,9 @@ var Canvas = function() {
 	
 	cv.inactive = function() {
 		$(cv.canvas).removeClass('active');
+	};
+	
+	cv.addObject = function(obj) {
+		return cv.objects.push(obj) -1;
 	};
 };
