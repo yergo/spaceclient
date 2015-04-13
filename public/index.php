@@ -6,10 +6,13 @@
 	$assets = [
 		['css', 'canvas'],
 		
-		['js', 'canvas'],
 		['js', 'jquery-2.1.3.min'],
 		['js', 'socket.io-1.3.4'],
-		['js', 'client']
+		['js', 'canvas'],
+		['js', 'client'],
+		['js', 'mersenne_twister'],
+		['js', 'prng'],
+		['js', 'galaxy'],
 	];
 	
 	foreach($assets as $asset) {
