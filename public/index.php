@@ -8,6 +8,7 @@
 		
 		['js', 'jquery-2.1.3.min'],
 		['js', 'socket.io-1.3.4'],
+		['js', 'timeout'],
 		['js', 'canvas'],
 		['js', 'client'],
 		['js', 'mersenne_twister'],
@@ -52,6 +53,7 @@
 		
 	    window.addEventListener('resize', canvas.resizeCanvas, false);
 		canvas.resizeCanvas();
+		canvas.redraw();
 		
     </script>
 </html>
