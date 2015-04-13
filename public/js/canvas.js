@@ -12,17 +12,16 @@ var Canvas = function() {
     cv.resizeCanvas = function () {
 		cv.canvas.width = window.innerWidth;
 		cv.canvas.height = window.innerHeight;
-		cv.timer = cv.timer === false && setTimeout(function() {
-			cv.redraw();
-			cv.timer = false;
-			console.log('redrawing');
-		}, 1000/60);
+		cv.redraw();
     };
 
 	cv.redraw = function() {
+		
+		renderStart = new Date().getTime();
+		
 		cv.context.save();
 		cv.context.clearRect(0, 0, canvas.width, canvas.height);
-		cv.context.globalAlpha=1;
+		cv.context.globalAlpha = 1;
 		
 		g = {
 			radius: 300,
@@ -38,6 +37,7 @@ var Canvas = function() {
 		}
 		
 		cv.context.restore();
+		console.log('Render time: ' + (new Date().getTime()-renderStart) + 'ms');
 	};
 
 	cv.active = function () {

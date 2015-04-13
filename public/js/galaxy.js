@@ -81,15 +81,16 @@ var Star = function(seed, position) {
 	};
 	
 	star.render = function(canvas, context) {
-		
+
 		origin = {
 			x: (this.position.x * g.radius * g.scale + g.x),
-			y: (this.position.y * g.radius * g.scale + g.y)
+			y: (this.position.y * g.radius * g.scale + g.y),
+			opacity: (0.9 * ((1 + this.position.z)/2)).toFixed(2)
 		};
 
 		context.beginPath();
-		context.arc(origin.x, origin.y, 1, 0, 2*Math.PI, false);
-		context.fillStyle = 'white';
+		context.arc(origin.x, origin.y, 2, 0, 2*Math.PI, false);
+		context.fillStyle = 'rgba(255,255,255,' + (origin.opacity).toString() + ')';
 		context.fill();
 	};
 };
