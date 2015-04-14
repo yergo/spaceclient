@@ -4,7 +4,7 @@
 
 function Scene( ) {
 	this.scene = new THREE.Scene();
-	this.camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 20000 );
+	this.camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 15000 );
 	this.controls = new THREE.OrbitControls( this.camera );
 	
 	this.renderer = new THREE.WebGLRenderer();
@@ -16,7 +16,8 @@ function Scene( ) {
 	 * @todo: SkyBox
 	 */
 	// AbientLight - everything is sopposed to be invisible in black
-	var ambientLight = new THREE.AmbientLight( 0x000000 );
+//	var ambientLight = new THREE.AmbientLight( 0x000000 );
+	var ambientLight = new THREE.AmbientLight( 0xffffff );
 	this.scene.add( ambientLight );
 
 			var lights = [];
@@ -32,9 +33,9 @@ function Scene( ) {
 			this.scene.add( lights[1] );
 			this.scene.add( lights[2] );
 
-	this.scene.fog = new THREE.Fog(0x000000, 500, 5000);
+//	this.scene.fog = new THREE.Fog(0x000000, 500, 5000);
 
-	this.camera.position.z = 3000;
+	this.camera.position.z = 13000;
 }
 
 Scene.prototype.light = false;
@@ -48,7 +49,7 @@ Scene.prototype.addObject = function(elem) {
 Scene.prototype.render = function() {
 	this.controls.update();
 	for(var i in this.objects) {
-		this.objects[i].Object3D.rotation.x += 0.1;
+		this.objects[i].update();
 	}
 
 	this.renderer.render(this.scene, this.camera);

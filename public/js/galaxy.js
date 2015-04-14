@@ -7,17 +7,17 @@ var Config = function() {
 	cnf = this;
 
 	cnf.spiral_arms = 2,
-	cnf.spiral_angle_degrees = 360,
-	cnf.min_radius = 0.05 * 3000,
-	cnf.max_radius = 0.9 * 3000,
-	cnf.thickness = 0.1 * 3000,
+	cnf.spiral_angle_degrees = 320,
+	cnf.min_radius = 0.05 * 10000,
+	cnf.max_radius = 0.9 * 10000,
+	cnf.thickness = 0.1 * 10000,
 	cnf.scatter_theta = Math.PI / cnf.spiral_arms * 0.2,
 	cnf.scatter_radius = cnf.min_radius * 0.4,
 	cnf.spiral_b = cnf.spiral_angle_degrees / Math.PI * cnf.min_radius / cnf.max_radius,
 	cnf.start = (new Date()).getTime(),
 	cnf.names = [],
 	cnf.rejects = {badwords: 0, duplicates: 0},
-	cnf.totalCount = 500,
+	cnf.totalCount = 300,
 	cnf.seed = 1024;
 
 	return cnf;
@@ -68,6 +68,7 @@ var Star = function(seed, position) {
 	star.seed = seed;
 	star.position = position;
 	star.name = null;
+	star.rotation = {x: 0, y: 0};
 
 	star.getName = function() {
 		if (star.name === null) {
@@ -89,6 +90,11 @@ var Star = function(seed, position) {
 		sphere.position.y = star.position.y;
 		sphere.position.z = star.position.z;
 
+		star.rotation = {
+			x: star.random.realRange(0, 0.01),
+			y: star.random.realRange(0, 0.01)
+		};
+		
 		return sphere;
 	})();
 	
@@ -96,7 +102,8 @@ var Star = function(seed, position) {
 		/**
 		 * @todo not working
 		 */
-		star.Object3D.rotation.x += 0.1;
+		this.Object3D.rotation.x += this.rotation.x;
+		this.Object3D.rotation.y += this.rotation.y;
 	};
 	
 };
