@@ -20,20 +20,9 @@ function Scene( ) {
 	var ambientLight = new THREE.AmbientLight( 0xffffff );
 	this.scene.add( ambientLight );
 
-			var lights = [];
-			lights[0] = new THREE.PointLight( 0xffffff, 1, 0 );
-			lights[1] = new THREE.PointLight( 0xffffff, 1, 0 );
-			lights[2] = new THREE.PointLight( 0xffffff, 1, 0 );
-
-			lights[0].position.set( 0, 200, 0 );
-			lights[1].position.set( 100, 200, 100 );
-			lights[2].position.set( -100, -200, -100 );
-
-			this.scene.add( lights[0] );
-			this.scene.add( lights[1] );
-			this.scene.add( lights[2] );
-
-//	this.scene.fog = new THREE.Fog(0x000000, 500, 5000);
+    // http://bkcore.com/blog/3d/webgl-three-js-animated-selective-glow.html
+	glowscene = new THREE.Scene();
+	glowscene.add( new THREE.AmbientLight( 0xffffff ) );
 
 	this.camera.position.z = 13000;
 }
