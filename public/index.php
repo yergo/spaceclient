@@ -44,7 +44,7 @@
     <script>
 
 		scene = new Scene();
-		scene.setEvents();
+		window.addEventListener('resize', function() { scene.refreshSize(); }, false);
 
 //		canvas = new Canvas();
 //		client = new Client();
