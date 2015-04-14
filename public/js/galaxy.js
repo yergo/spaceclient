@@ -70,15 +70,15 @@ var Star = function(seed, position) {
 	star.name = null;
 
 	star.getName = function() {
-		if (star.name === null) {
-			star.name = Math.random();
+		if (this.name === null) {
+			this.name = Math.random();
 		}
 
-		return star.name;
+		return this.name;
 	};
 	
 	star.Object3D = (function() {
-		var geometry = new THREE.SphereGeometry( 20, 10, 10 );
+		var geometry = new THREE.SphereGeometry( 50, 10, 10 );
 		var material = new THREE.MeshPhongMaterial('0xffffff');
 		material.map = sunmap;
 
@@ -96,7 +96,7 @@ var Star = function(seed, position) {
 		/**
 		 * @todo not working
 		 */
-		star.Object3D.rotation.x += 0.1;
+		this.Object3D.rotation.x += 0.01;
 	};
 	
 };

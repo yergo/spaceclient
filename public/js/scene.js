@@ -32,7 +32,7 @@ function Scene( ) {
 			this.scene.add( lights[1] );
 			this.scene.add( lights[2] );
 
-	this.scene.fog = new THREE.Fog(0x000000, 500, 5000);
+//	this.scene.fog = new THREE.Fog(0x000000, 35000, 39000);
 
 	this.camera.position.z = 3000;
 }
@@ -48,7 +48,7 @@ Scene.prototype.addObject = function(elem) {
 Scene.prototype.render = function() {
 	this.controls.update();
 	for(var i in this.objects) {
-		this.objects[i].Object3D.rotation.x += 0.1;
+		this.objects[i].update();
 	}
 
 	this.renderer.render(this.scene, this.camera);
