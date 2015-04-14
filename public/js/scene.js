@@ -15,16 +15,42 @@ function Scene( ) {
 	 * @todo: light
 	 * @todo: SkyBox
 	 */
+	// AbientLight - everything is sopposed to be invisible in black
+	var ambientLight = new THREE.AmbientLight( 0x000000 );
+	this.scene.add( ambientLight );
 
-	this.camera.position.z = 1500;
+			var lights = [];
+			lights[0] = new THREE.PointLight( 0xffffff, 1, 0 );
+			lights[1] = new THREE.PointLight( 0xffffff, 1, 0 );
+			lights[2] = new THREE.PointLight( 0xffffff, 1, 0 );
+
+			lights[0].position.set( 0, 200, 0 );
+			lights[1].position.set( 100, 200, 100 );
+			lights[2].position.set( -100, -200, -100 );
+
+			this.scene.add( lights[0] );
+			this.scene.add( lights[1] );
+			this.scene.add( lights[2] );
+
+	this.scene.fog = new THREE.Fog(0x000000, 500, 5000);
+
+	this.camera.position.z = 3000;
 }
 
-Scene.prototype.addObject = function(obj) {
-	this.scene.add(obj.getElement());
+Scene.prototype.light = false;
+Scene.prototype.objects = [];
+
+Scene.prototype.addObject = function(elem) {
+	this.objects.push(elem);
+	this.scene.add(elem.Object3D);
 };
 
 Scene.prototype.render = function() {
 	this.controls.update();
+	for(var i in this.objects) {
+		this.objects[i].Object3D.rotation.x += 0.1;
+	}
+
 	this.renderer.render(this.scene, this.camera);
 };
 

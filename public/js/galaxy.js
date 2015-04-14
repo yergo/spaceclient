@@ -17,7 +17,7 @@ var Config = function() {
 	cnf.start = (new Date()).getTime(),
 	cnf.names = [],
 	cnf.rejects = {badwords: 0, duplicates: 0},
-	cnf.totalCount = 5000,
+	cnf.totalCount = 500,
 	cnf.seed = 1024;
 
 	return cnf;
@@ -58,13 +58,16 @@ var Galaxy = function(config) {
 
 };
 
+var sunmap = THREE.ImageUtils.loadTexture("img/textures/sunmap2k.png");
+
 var Star = function(seed, position) {
+	
 	star = this;
 
+	star.random = new PRNG(seed);
 	star.seed = seed;
 	star.position = position;
 	star.name = null;
-	star.obj = null;
 
 	star.getName = function() {
 		if (star.name === null) {
@@ -74,16 +77,26 @@ var Star = function(seed, position) {
 		return star.name;
 	};
 	
-	star.getElement = function() {
-		
-		var geometry = new THREE.SphereGeometry( 10, 3, 3 );
-		var material = new THREE.MeshBasicMaterial();
+	star.Object3D = (function() {
+		var geometry = new THREE.SphereGeometry( 20, 10, 10 );
+		var material = new THREE.MeshPhongMaterial('0xffffff');
+		material.map = sunmap;
+
 		var sphere = new THREE.Mesh( geometry, material );
-	
+		sphere.castShadow = false;
+
 		sphere.position.x = star.position.x;
 		sphere.position.y = star.position.y;
 		sphere.position.z = star.position.z;
+
 		return sphere;
+	})();
+	
+	star.update = function() {
+		/**
+		 * @todo not working
+		 */
+		star.Object3D.rotation.x += 0.1;
 	};
 	
 };
