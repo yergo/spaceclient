@@ -7,18 +7,18 @@ var Config = function() {
 	cnf = this;
 
 	cnf.spiral_arms = 2,
-		cnf.spiral_angle_degrees = 360,
-		cnf.min_radius = 0.05,
-		cnf.max_radius = 0.9,
-		cnf.thickness = 0.1,
-		cnf.scatter_theta = Math.PI / cnf.spiral_arms * 0.2,
-		cnf.scatter_radius = cnf.min_radius * 0.4,
-		cnf.spiral_b = cnf.spiral_angle_degrees / Math.PI * cnf.min_radius / cnf.max_radius,
-		cnf.start = (new Date()).getTime(),
-		cnf.names = [],
-		cnf.rejects = {badwords: 0, duplicates: 0},
-		cnf.totalCount = 5000,
-		cnf.seed = 1024;
+	cnf.spiral_angle_degrees = 360,
+	cnf.min_radius = 0.05 * 3000,
+	cnf.max_radius = 0.9 * 3000,
+	cnf.thickness = 0.1 * 3000,
+	cnf.scatter_theta = Math.PI / cnf.spiral_arms * 0.2,
+	cnf.scatter_radius = cnf.min_radius * 0.4,
+	cnf.spiral_b = cnf.spiral_angle_degrees / Math.PI * cnf.min_radius / cnf.max_radius,
+	cnf.start = (new Date()).getTime(),
+	cnf.names = [],
+	cnf.rejects = {badwords: 0, duplicates: 0},
+	cnf.totalCount = 5000,
+	cnf.seed = 1024;
 
 	return cnf;
 };
@@ -52,8 +52,6 @@ var Galaxy = function(config) {
 
 			var star = new Star(r, position);
 			gx.stars.push(star);
-			i = cv.addObject(star);
-			star.setObj(i);
 		}
 
 	};
@@ -76,22 +74,17 @@ var Star = function(seed, position) {
 		return star.name;
 	};
 	
-	star.setObj = function(obj) {
-		star.obj = obj;
+	star.getElement = function() {
+		
+		var geometry = new THREE.SphereGeometry( 10, 3, 3 );
+		var material = new THREE.MeshBasicMaterial();
+		var sphere = new THREE.Mesh( geometry, material );
+	
+		sphere.position.x = star.position.x;
+		sphere.position.y = star.position.y;
+		sphere.position.z = star.position.z;
+		return sphere;
 	};
 	
-	star.render = function(canvas, context) {
-
-		origin = {
-			x: (this.position.x * g.radius * g.scale + g.x),
-			y: (this.position.y * g.radius * g.scale + g.y),
-			opacity: (0.9 * ((1 + this.position.z)/2)).toFixed(2)
-		};
-
-		context.beginPath();
-		context.arc(origin.x, origin.y, 2, 0, 2*Math.PI, false);
-		context.fillStyle = 'rgba(255,255,255,' + (origin.opacity).toString() + ')';
-		context.fill();
-	};
 };
 

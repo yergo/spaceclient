@@ -7,6 +7,7 @@
 		['css', 'canvas'],
 		
 		['js', 'jquery-2.1.3.min'],
+		['js', 'controls/OrbitControls'],
 		['js', 'socket.io-1.3.4'],
 		['js', 'timeout'],
 		['js', 'scene'],
@@ -45,6 +46,12 @@
 
 		scene = new Scene();
 		window.addEventListener('resize', function() { scene.refreshSize(); }, false);
+		
+		function animate() {
+			requestAnimationFrame(animate);
+			scene.render();
+		}
+		animate();
 
 //		canvas = new Canvas();
 //		client = new Client();
@@ -53,8 +60,13 @@
 //		client.installEvent('connect', canvas.active);
 //		client.installEvent('disconnect', canvas.inactive);
 //		
-//		gl = new Galaxy();
-//		gl.generate(canvas);
+		gl = new Galaxy();
+		gl.generate();
+		
+		for(i in gl.stars) {
+			star = gl.stars[i];
+			scene.addObject(star);
+		}
 //		
 //	    window.addEventListener('resize', canvas.resizeCanvas, false);
 //		canvas.resizeCanvas();
