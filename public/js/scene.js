@@ -21,8 +21,9 @@ function Scene( ) {
 	this.scene.add( ambientLight );
 
     // http://bkcore.com/blog/3d/webgl-three-js-animated-selective-glow.html
-	glowscene = new THREE.Scene();
-	glowscene.add( new THREE.AmbientLight( 0xffffff ) );
+	// http://aerotwist.com/tutorials/an-introduction-to-shaders-part-2/
+//	glowscene = new THREE.Scene();
+//	glowscene.add( new THREE.AmbientLight( 0xffffff ) );
 
 	this.camera.position.z = 13000;
 }
