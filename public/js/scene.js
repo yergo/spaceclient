@@ -4,7 +4,7 @@
 
 function Scene( ) {
 	this.scene = new THREE.Scene();
-	this.camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 15000 );
+	this.camera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 15000 );
 	this.controls = new THREE.OrbitControls( this.camera );
 	
 	this.renderer = new THREE.WebGLRenderer();
@@ -26,6 +26,7 @@ function Scene( ) {
 //	glowscene.add( new THREE.AmbientLight( 0xffffff ) );
 
 	this.camera.position.z = 13000;
+	this.camera.position.z = 50;
 }
 
 Scene.prototype.light = false;
