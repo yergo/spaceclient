@@ -11,6 +11,10 @@
 		['js', 'controls/OrbitControls'],
 		['js', 'socket.io-1.3.4'],
 		['js', 'scene'],
+		
+		['js', 'StarSystem/Star'],
+		['js', 'StarSystem/Planet'],
+		['js', 'StarSystem/Moon']
 
 	];
 	
@@ -41,6 +45,17 @@
 
 		scene = new Scene();
 		window.addEventListener('resize', function() { scene.refreshSize(); }, false);
+		
+		// objects
+		star = new Star();
+		star.position.set(0,0,0);
+		
+		planetOne = new Planet();
+		planetOne.position.set(0, 0, 2000);
+		star.addObject(planetOne);
+		
+		scene.addObject(star);
+		
 		
 		function animate() {
 			requestAnimationFrame(animate);
