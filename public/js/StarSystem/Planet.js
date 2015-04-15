@@ -41,8 +41,9 @@ var Planet = function(seed) {
 		}
 		
 		// temp
-		this.rotation.y += 1/60 / 15; // sphere rotation
-		this.Object3D.rotation.y += 1/60 / 20; // orbitElement rotation
+//		this.rotation.y -= 1/60 / 30; // sphere rotation
+//		this.Object3D.rotation.y += 1/60 / 30; // orbitElement rotation
+		this.Object3D.rotation.y += 0.1; // orbitElement rotation
 	};
 	
 	return planet;

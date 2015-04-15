@@ -35,7 +35,7 @@ var Star = function(seed) {
 			this.objects[i].animate();
 		}
 		// temp
-		this.rotation.y += 1/60 / 30
+//		this.rotation.y += 1/60 / 30;
 		
 	};
 	
