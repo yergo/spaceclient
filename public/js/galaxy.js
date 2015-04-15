@@ -59,7 +59,6 @@ var Galaxy = function(config) {
 };
 
 var sunmap = THREE.ImageUtils.loadTexture("img/textures/sunmap2k.png");
-var sunmapglow = THREE.ImageUtils.loadTexture("img/textures/sunmap2k_glow.png");
 
 var Star = function(seed, position) {
 	
@@ -81,19 +80,11 @@ var Star = function(seed, position) {
 	
 	star.Object3D = (function() {
 		var geometry = new THREE.SphereGeometry( 50, 10, 10 );
-		var material = new THREE.MeshPhongMaterial({
-			color: 0xffffff,
-			map: sunmap
-		});
-		var glowmaterial = new THREE.MeshPhongMaterial({
-			color: 0x000000,
-			ambient: 0xffffff,
-			map: sunmapglow
-		});
+		var material = new THREE.MeshPhongMaterial('0xffffff');
+		material.map = sunmap;
 
 		var sphere = new THREE.Mesh( geometry, material );
-		var glowsphere = new THREE.Mesh( geometry, glowmaterial );
-//		sphere.castShadow = false;
+		sphere.castShadow = false;
 
 		sphere.position.x = star.position.x;
 		sphere.position.y = star.position.y;
@@ -104,28 +95,15 @@ var Star = function(seed, position) {
 			y: star.random.realRange(0, 0.01)
 		};
 		
-		
-		glowsphere.position = sphere.position;
-		glowsphere.rotation = sphere.rotation;
-		glowsphere.scale = sphere.scale;
-		glowsphere.overdraw = true;
-
-		
-		
-		return {
-			'scene': sphere,
-			'glowscene': glowsphere
-		};
+		return sphere;
 	})();
 	
 	star.update = function() {
 		/**
 		 * @todo not working
 		 */
-		this.Object3D.scene.rotation.x += this.rotation.x;
-		this.Object3D.scene.rotation.y += this.rotation.y;
-		this.Object3D.glowscene.rotation.x += this.rotation.x;
-		this.Object3D.glowscene.rotation.y += this.rotation.y;
+		this.Object3D.rotation.x += this.rotation.x;
+		this.Object3D.rotation.y += this.rotation.y;
 	};
 	
 };

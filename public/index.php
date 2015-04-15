@@ -1,19 +1,12 @@
 <html>
     <head>
+	<script src ="https://cdnjs.cloudflare.com/ajax/libs/three.js/r71/three.min.js"></script>
 <?php
 	
 	$assets = [
 		['css', 'canvas'],
 		
 		['js', 'jquery-2.1.3.min'],
-		['js', 'three'],
-//		['js', 'MyShaders'],
-//		['js', 'shaders/CopyShader'],
-//		['js', 'postprocessing/MaskPass'],
-//		['js', 'postprocessing/RenderPass'],
-//		['js', 'postprocessing/ShaderPass'],
-//		['js', 'postprocessing/EffectComposer'],
-//		['js', 'ShaderExtras'],
 		['js', 'controls/OrbitControls'],
 		['js', 'socket.io-1.3.4'],
 		['js', 'timeout'],
