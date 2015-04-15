@@ -31,6 +31,15 @@ Scene.prototype.light = false;
 Scene.prototype.objects = [];
 
 Scene.prototype.addObject = function(elem) {
+
+	/**
+	 * Light experiments, looks quite ok, heavy for system
+	 */
+//	light = new THREE.PointLight(0xffffff, 10, 1000);
+//	light.scale.set(elem.Object3D.scale.x-10, elem.Object3D.scale.y, elem.Object3D.scale.z);
+//	light.position.set(elem.Object3D.position.x,elem.Object3D.position.y,elem.Object3D.position.z );
+//	elem.Object3D.add(light);
+	
 	this.objects.push(elem);
 	this.scene.add(elem.Object3D);
 };

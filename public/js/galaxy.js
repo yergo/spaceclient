@@ -17,7 +17,8 @@ var Config = function() {
 	cnf.start = (new Date()).getTime(),
 	cnf.names = [],
 	cnf.rejects = {badwords: 0, duplicates: 0},
-	cnf.totalCount = 300,
+	cnf.totalCount = 500,
+//	cnf.totalCount = 100,
 	cnf.seed = 1024;
 
 	return cnf;
@@ -83,7 +84,11 @@ var Star = function(seed, position) {
 	star.Object3D = (function() {
 		var geometry = new THREE.SphereGeometry( 50, 10, 10 );
 		var material = new THREE.MeshPhongMaterial({
-			map: sunmap
+			color: 0xffffff,
+			map: sunmap,
+//			alphaMap: sunmapglow,
+//			lightMap: sunmapalpha,
+			transparent: true
 		});
 
 		var sphere = new THREE.Mesh( geometry, material );
