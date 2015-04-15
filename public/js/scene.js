@@ -1,7 +1,4 @@
 
-// http://stemkoski.github.io/Three.js/Atmosphere.html
-// atmosphere example
-
 function Scene( ) {
 	this.scene = new THREE.Scene();
 	this.camera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 15000 );
@@ -10,38 +7,17 @@ function Scene( ) {
 	this.renderer = new THREE.WebGLRenderer();
 	this.renderer.setSize( window.innerWidth, window.innerHeight );
 	document.body.appendChild( this.renderer.domElement );
-	
-	/**
-	 * @todo: light
-	 * @todo: SkyBox
-	 */
-	// AbientLight - everything is sopposed to be invisible in black
-//	var ambientLight = new THREE.AmbientLight( 0x000000 );
+
 	var ambientLight = new THREE.AmbientLight( 0xffffff );
 	this.scene.add( ambientLight );
 
-    // http://bkcore.com/blog/3d/webgl-three-js-animated-selective-glow.html
-	// http://aerotwist.com/tutorials/an-introduction-to-shaders-part-2/
-//	glowscene = new THREE.Scene();
-//	glowscene.add( new THREE.AmbientLight( 0xffffff ) );
-
-	this.camera.position.z = 13000;
-	this.camera.position.z = 50;
+	this.camera.position.z = 1000;
 }
 
-Scene.prototype.light = false;
 Scene.prototype.objects = [];
 
 Scene.prototype.addObject = function(elem) {
 
-	/**
-	 * Light experiments, looks quite ok, heavy for system
-	 */
-//	light = new THREE.PointLight(0xffffff, 10, 1000);
-//	light.scale.set(elem.Object3D.scale.x-10, elem.Object3D.scale.y, elem.Object3D.scale.z);
-//	light.position.set(elem.Object3D.position.x,elem.Object3D.position.y,elem.Object3D.position.z );
-//	elem.Object3D.add(light);
-	
 	this.objects.push(elem);
 	this.scene.add(elem.Object3D);
 };

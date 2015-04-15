@@ -10,22 +10,8 @@
 //		['js', 'RenderManager'],
 		['js', 'controls/OrbitControls'],
 		['js', 'socket.io-1.3.4'],
-		['js', 'timeout'],
 		['js', 'scene'],
-		
-//		['js', 'canvas'],
-//		['js', 'client'],
-		
-		['js', 'mersenne_twister'],
-		['js', 'prng'],
-		['js', 'galaxy'],
 
-		['js', 'loaders/OBJLoader'],
-		['js', 'loaders/MTLLoader'],
-		['js', 'loaders/OBJMTLLoader'],
-		['js', 'ship'],
-		
-//		['js', 'star'],
 	];
 	
 	foreach($assets as $asset) {
@@ -62,46 +48,5 @@
 		}
 		animate();
 
-//		canvas = new Canvas();
-//		client = new Client();
-//		
-//		client.connect();
-//		client.installEvent('connect', canvas.active);
-//		client.installEvent('disconnect', canvas.inactive);
-//		
-
-
-/**
- * Galaxy
- */
-
-//		gl = new Galaxy();
-//		gl.generate();
-//		
-//		for(i in gl.stars) {
-//			star = gl.stars[i];
-//			scene.addObject(star);
-//		}
-
-/**
- * Ship
- */
-		
-		ship = new Ship(scene, 'SpaceFighter03');
-		
-		var light = new THREE.PointLight('white', 10, 0);
-		light.position.set(0, 0, 0);
-		light.name	= 'Key light';
-		
-		star = new Star(0, {x: 100 , y: 500 , z: -1000});
-		star.Object3D.add(light);
-		
-		scene.addObject(star);
-		
-
-//	    window.addEventListener('resize', canvas.resizeCanvas, false);
-//		canvas.resizeCanvas();
-//		canvas.redraw();
-		
     </script>
 </html>
