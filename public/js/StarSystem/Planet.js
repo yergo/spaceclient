@@ -5,8 +5,6 @@ var Planet = function(seed) {
 	
 	planet.objects = [];
 	
-	planet.sphere = null;
-	
 	planet.Object3D = (function() {
 		
 		var sphereGeometry = new THREE.SphereGeometry(100, 15, 15);
@@ -20,20 +18,11 @@ var Planet = function(seed) {
 		var sphereMesh = new THREE.Mesh(sphereGeometry, sphereMaterial);
 		sphereMesh.castShadow = true; // planets are casting shadows
 		
-		planet.sphere = sphereMesh;
-		
-		var orbitElement = new THREE.Object3D();
-		orbitElement.add(planet.sphere);
-		
-		orbitElement.rotation.x = Math.random();
-		orbitElement.rotation.y = 0;
-		orbitElement.rotation.z = 0;
-		
-		return orbitElement;
+		return sphereMesh;
 	})();
 	
-	planet.position = planet.sphere.position;
-	planet.rotation = planet.sphere.rotation;
+	planet.position = planet.Object3D.position;
+	planet.rotation = planet.Object3D.rotation;
 	
 	planet.animate = function() {
 		for(var i in this.objects) {
@@ -41,7 +30,6 @@ var Planet = function(seed) {
 		}
 		
 //		this.rotation.y -= 1/60 / 30; // sphere rotation - spinning planet
-//		this.Object3D.rotation.y += 1/60 / 30; // orbitElement rotation - orbiting planet
 	};
 	
 	return planet;

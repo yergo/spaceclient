@@ -11,7 +11,7 @@ function Scene( ) {
 	var ambientLight = new THREE.AmbientLight( 0xffffff );
 	this.scene.add( ambientLight );
 
-	this.camera.position.z = 2300;
+	this.camera.position.z = 5300;
 }
 
 Scene.prototype.objects = [];
