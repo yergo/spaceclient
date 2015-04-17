@@ -67,8 +67,8 @@
 			planet.position.set(i*1500, 0, 0); // odsunięcie od gwiazdy
 			
 			planetOrbit.addObject(planet);
-			planetOrbit.rotation.x += -0.5 + Math.random();
-			planetOrbit.rotationSpeed.y = Math.random() / 100;
+			planetOrbit.rotation.x += -0.5 + Math.random(); // odchylenie od poziomu
+			planetOrbit.rotationSpeed.y = Math.random() / 100; // prędkość orbitowania
 			
 			starOrbit.addObject(planetOrbit);
 		}
