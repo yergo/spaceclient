@@ -49,42 +49,29 @@
 		
 		systemOrbit = new OrbitHandler();
 		starOrbit = new OrbitHandler();
-		planetOneOrbit = new OrbitHandler();
-		planetTwoOrbit = new OrbitHandler();
-		planetThreeOrbit = new OrbitHandler();
 		
 		systemOrbit.position.set(0,0,0);
 		starOrbit.position.set(0,0,0);
-		planetOneOrbit.position.set(0,0,0);
-		planetTwoOrbit.position.set(0,0,0);
-		planetThreeOrbit.position.set(0,0,0);
 
 		star = new Star();
-		planetOne = new Planet();
-		planetTwo = new Planet();
-		planetThree = new Planet();
-		
 		star.position.set(0,0,0);
-		planetOne.position.set(2000, 0, 0);
-		planetTwo.position.set(4000, 0, 0);
-		planetThree.position.set(6000, 0, 0);
-		
+
 		starOrbit.addObject(star);
-		planetOneOrbit.addObject(planetOne);
-		planetTwoOrbit.addObject(planetTwo);
-		planetThreeOrbit.addObject(planetThree);
+
 		
-		planetOneOrbit.rotation.x += 0.5;
-		planetTwoOrbit.rotation.x -= 0.2;
-		planetThreeOrbit.rotation.x -= 0.0;
-		
-		planetOneOrbit.rotationSpeed.y = 0.02;
-		planetTwoOrbit.rotationSpeed.y = 0.01;
-		planetThreeOrbit.rotationSpeed.y = 0.005;
-		
-		starOrbit.addObject(planetOneOrbit);
-		starOrbit.addObject(planetTwoOrbit);
-		starOrbit.addObject(planetThreeOrbit);
+		for(var i =1; i <= 4; i++) {
+			var planetOrbit = new OrbitHandler();;
+			planetOrbit.position.set(0,0,0);
+			
+			planet = new Planet();
+			planet.position.set(i*1500, 0, 0); // odsunięcie od gwiazdy
+			
+			planetOrbit.addObject(planet);
+			planetOrbit.rotation.x += -0.5 + Math.random();
+			planetOrbit.rotationSpeed.y = Math.random() / 100;
+			
+			starOrbit.addObject(planetOrbit);
+		}
 		
 		systemOrbit.addObject(starOrbit);
 		
