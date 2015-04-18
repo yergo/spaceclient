@@ -35,11 +35,12 @@ var Planet = function(seed) {
 	
 	planet.Object3D = (function() {
 		
-		var sphereGeometry = new THREE.SphereGeometry(100, 15, 15);
+		var sphereGeometry = new THREE.SphereGeometry(5 + 100 * Math.random(), 15, 15);
 		var sphereMaterial = new THREE.MeshPhongMaterial({
 //			color: 0x00C000,
 			map: PlanetTextures.next()
 		});
+		sphereMaterial.wrapAround = true;
 		
 		// temp
 //		sphereMaterial.wireframe = true;

@@ -23,7 +23,7 @@ var Star = function(seed) {
 		
 		// temp
 //		sphereMaterial.wireframe = true;
-		sphereMaterial.emissive = new THREE.Color(20,20,20);
+		sphereMaterial.emissive = new THREE.Color(15,15,15);
 		
 		var sphereMesh = new THREE.Mesh(sphereGeometry, sphereMaterial);
 		sphereMesh.castShadow = false; // stars are not casting shadows
