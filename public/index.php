@@ -59,7 +59,7 @@
 		starOrbit.addObject(star);
 
 		
-		for(var i =1; i <= 4; i++) {
+		for(var i =1; i <= 7; i++) {
 			var planetOrbit = new OrbitHandler();;
 			planetOrbit.position.set(0,0,0);
 			
@@ -67,8 +67,14 @@
 			planet.position.set(i*1500, 0, 0); // odsunięcie od gwiazdy
 			
 			planetOrbit.addObject(planet);
-			planetOrbit.rotation.x += -0.5 + Math.random(); // odchylenie od poziomu
-			planetOrbit.rotationSpeed.y = Math.random() / 100; // prędkość orbitowania
+			planetOrbit.rotation.x += Math.PI * 2 * Math.random(); // odchylenie od poziomu
+			planetOrbit.rotation.z += -0.5 + Math.random(); // odchylenie od poziomu
+			planetOrbit.rotation.y += Math.PI * 2 * Math.random(); // odchylenie od osi y, miejsce staru na orbicie
+			
+			// prędkość orbitowania
+//			planetOrbit.rotationSpeed.y = Math.PI; // 1 orbita na minute
+//			planetOrbit.rotationSpeed.y = Math.PI * 2 / 60; // 1 orbita na minute
+			planetOrbit.rotationSpeed.y = Math.PI / 30 / 60 * (0.5 + Math.random()); // 1 orbita na godzinę
 			
 			starOrbit.addObject(planetOrbit);
 		}

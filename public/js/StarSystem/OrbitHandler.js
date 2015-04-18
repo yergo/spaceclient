@@ -20,14 +20,14 @@ var OrbitHandler = function() {
 		z: 0
 	};
 	
-	handler.animate = function() {
+	handler.animate = function(delta) {
 		
 		for(var i in this.objects) {
-			this.objects[i].animate();
+			this.objects[i].animate(delta);
 		}
 		
-		this.Object3D.rotation.x += this.rotationSpeed.x;
-		this.Object3D.rotation.y += this.rotationSpeed.y;
-		this.Object3D.rotation.z += this.rotationSpeed.z;
+		this.Object3D.rotation.x += this.rotationSpeed.x * delta;
+		this.Object3D.rotation.y += this.rotationSpeed.y * delta;
+		this.Object3D.rotation.z += this.rotationSpeed.z * delta;
 	};
 };

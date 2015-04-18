@@ -1,14 +1,18 @@
 
 function Scene( ) {
 	this.scene = new THREE.Scene();
-	this.camera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 15000 );
+	this.camera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 150000 );
 	this.controls = new THREE.OrbitControls( this.camera );
+	
+	this.clock = new THREE.Clock(true);
 	
 	this.renderer = new THREE.WebGLRenderer();
 	this.renderer.setSize( window.innerWidth, window.innerHeight );
 	document.body.appendChild( this.renderer.domElement );
 
-	var ambientLight = new THREE.AmbientLight( 0xffffff );
+//	var ambientLight = new THREE.AmbientLight( 0xffffff );
+//	var ambientLight = new THREE.AmbientLight( 0x505050 );
+	var ambientLight = new THREE.AmbientLight( 0x000000 );
 	this.scene.add( ambientLight );
 
 	this.camera.position.z = 5300;
@@ -25,7 +29,7 @@ Scene.prototype.addObject = function(elem) {
 Scene.prototype.render = function() {
 	this.controls.update();
 	for(var i in this.objects) {
-		this.objects[i].animate();
+		this.objects[i].animate(this.clock.getDelta());
 	}
 
 	this.renderer.render(this.scene, this.camera);
