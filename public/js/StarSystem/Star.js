@@ -7,20 +7,20 @@ var Star = function(seed) {
 	
 	star.Object3D = (function() {
 		
-		var texture = new THREE.ImageUtils.loadTexture('img/textures/sunmap.jpg');
+		var textureMap = new THREE.ImageUtils.loadTexture('img/textures/sunmap.jpg');
 //		var glow = new THREE.ImageUtils.loadTexture('img/textures/sunmap_alpha.jpg');
 //		var light = new THREE.ImageUtils.loadTexture('img/textures/sunmap_glow.jpg');
-		var light = new THREE.ImageUtils.loadTexture('img/textures/sunmap_light.jpg');
+		var lightMap = new THREE.ImageUtils.loadTexture('img/textures/sunmap_light.jpg');
 		
 		var sphereGeometry = new THREE.SphereGeometry(1000, 30, 30);
-		sphereMaterial = new THREE.MeshPhongMaterial({
+		var sphereMaterial = new THREE.MeshPhongMaterial({
 //			color: 0x505050,
-			map: texture,
-			lightMap: light,
+			map: textureMap,
+			lightMap: lightMap,
 //			glowMap: glow,
 			transparent: true
 		});
-		
+
 		// temp
 //		sphereMaterial.wireframe = true;
 		sphereMaterial.emissive = new THREE.Color(15,15,15);
