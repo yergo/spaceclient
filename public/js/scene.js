@@ -10,8 +10,6 @@ function Scene( ) {
 	this.renderer.setSize( window.innerWidth, window.innerHeight );
 	document.body.appendChild( this.renderer.domElement );
 
-//	var ambientLight = new THREE.AmbientLight( 0xffffff );
-//	var ambientLight = new THREE.AmbientLight( 0x505050 );
 	var ambientLight = new THREE.AmbientLight( 0x000000 );
 	this.scene.add( ambientLight );
 
