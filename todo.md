@@ -5,6 +5,10 @@ To do:
 - spacecraft controls
 - spacecraft cameras
 - spacecraft inner interface
+- neighbour stars
+- particles - space dust
+- skybox
+- shadows
 
 In progress:
 - Solar system

@@ -1,7 +1,6 @@
-var Star = function(seed) {
+var Star = function() {
 
 	star = this;
-	star.seed = seed;
 	star.objects = [];
 	
 	star.Object3D = (function() {

@@ -1,15 +1,14 @@
 var MoonTextures = new Textures('moons', 2);
 
-var Moon = function(seed) {
+var Moon = function(size) {
 
 	moon = this;
-	moon.seed = seed;
 	
 	moon.objects = [];
 	
-	moon.Object3D = (function() {
+	moon.Object3D = (function(size) {
 		
-		var sphereGeometry = new THREE.SphereGeometry(1 + 10 * Math.random(), 15, 15);
+		var sphereGeometry = new THREE.SphereGeometry(size, 15, 15);
 		var sphereMaterial = new THREE.MeshPhongMaterial({
 			map: MoonTextures.next()
 		});
@@ -19,7 +18,7 @@ var Moon = function(seed) {
 		sphereMesh.castShadow = true; // moons are casting shadows
 		
 		return sphereMesh;
-	})();
+	})(size);
 	
 	moon.position = moon.Object3D.position;
 	moon.rotation = moon.Object3D.rotation;

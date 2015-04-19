@@ -1,15 +1,14 @@
 var PlanetTextures = new Textures('planets', 7);
 
-var Planet = function(seed) {
+var Planet = function(size) {
 
 	planet = this;
-	planet.seed = seed;
 	
 	planet.objects = [];
 	
-	planet.Object3D = (function() {
+	planet.Object3D = (function(size) {
 		
-		var sphereGeometry = new THREE.SphereGeometry(10 + 100 * Math.random(), 15, 15);
+		var sphereGeometry = new THREE.SphereGeometry(size, 15, 15);
 		var sphereMaterial = new THREE.MeshPhongMaterial({
 			map: PlanetTextures.next()
 		});
@@ -19,7 +18,7 @@ var Planet = function(seed) {
 		sphereMesh.castShadow = true; // planets are casting shadows
 		
 		return sphereMesh;
-	})();
+	})(size);
 	
 	planet.addObject = function(elem) {
 		this.objects.push(elem);
