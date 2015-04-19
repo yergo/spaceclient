@@ -1,16 +1,17 @@
 To do:
-- Solar system
 - Solar system from seed
+- Solar system from seed synchronised to creation time and delta
 - spacecraft
 - spacecraft controls
 - spacecraft cameras
 - spacecraft inner interface
 
 In progress:
-- Moon
+- Solar system
 
 Done:
 - Star
 - Planets
+- Moons
 - Textures loader
  

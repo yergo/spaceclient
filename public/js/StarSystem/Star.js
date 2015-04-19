@@ -8,8 +8,6 @@ var Star = function(seed) {
 	star.Object3D = (function() {
 		
 		var textureMap = new THREE.ImageUtils.loadTexture('img/textures/sunmap.jpg');
-//		var glow = new THREE.ImageUtils.loadTexture('img/textures/sunmap_alpha.jpg');
-//		var light = new THREE.ImageUtils.loadTexture('img/textures/sunmap_glow.jpg');
 		var lightMap = new THREE.ImageUtils.loadTexture('img/textures/sunmap_light.jpg');
 		
 		var sphereGeometry = new THREE.SphereGeometry(1000, 30, 30);

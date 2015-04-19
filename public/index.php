@@ -17,7 +17,12 @@
 		['js', 'StarSystem/Star'],
 		['js', 'StarSystem/Planet'],
 		['js', 'StarSystem/Moon'],
-
+		
+		// random generators
+		['js', 'Utils/MersenneTwister'],
+		['js', 'Utils/PRNG'],
+		['js', 'StarSystem/StarSystem'],
+		
 	];
 	
 	foreach($assets as $asset) {
@@ -60,7 +65,7 @@
 		starOrbit.addObject(star);
 
 		
-		for(var i =1; i <= 2; i++) {
+		for(var i =1; i <= 7; i++) {
 			var planetOrbit = new OrbitHandler();;
 			planetOrbit.position.set(0,0,0);
 			
@@ -77,7 +82,7 @@
 //			planetOrbit.rotationSpeed.y = Math.PI * 2 / 60; // 1 orbita na minute
 			planetOrbit.rotationSpeed.y = Math.PI / 30 / 60 * (0.5 + Math.random()); // 1 orbita na godzinę
 			
-			for(var m = 1; m <= Math.floor(1 + 3 * Math.random()); m++) {
+			for(var m = 1; m <= 3; m++) {
 				var moonOrbit = new OrbitHandler();
 				moonOrbit.position.set(0,0,0);
 				
