@@ -3,7 +3,6 @@ var Star = function(seed) {
 	star = this;
 	star.seed = seed;
 	star.objects = [];
-	star.hearths = [];
 	
 	star.Object3D = (function() {
 		
@@ -27,8 +26,8 @@ var Star = function(seed) {
 		
 		var light = new THREE.PointLight(0xffffff, 1, 100000);
 		light.position.set(0, 0, 0);
-
 		sphereMesh.add(light);
+		
 		return sphereMesh;
 	})();
 	

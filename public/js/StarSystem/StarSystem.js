@@ -17,7 +17,7 @@ var StarSystem = function(config) {
 		
 		for(var i in result) {
 			if(config.hasOwnProperty(i)) {
-				result.i = config.i;
+				result[i] = config[i];
 			}
 		}
 		
@@ -32,8 +32,8 @@ var StarSystem = function(config) {
 		for(var p = 0; p < count; p++) {
 			var planet = {
 				size: starsystem.random.range(20, 100), 
-				positon: {
-					x: 0,
+				position: {
+					x: 1000 + (p+1) * 1000 + starsystem.random.range(100, 1000), // distance from sun
 					y: 0,
 					z: 0
 				}, 
@@ -52,8 +52,8 @@ var StarSystem = function(config) {
 			for(var m = 0; m < moonCount; m++) {
 				var moon = {
 					size: starsystem.random.range(1, 10), 
-					positon: {
-						x: 0,
+					position: {
+						x: 10 + (m+1) * 100 + starsystem.random.range(50, 100), // distance from planet
 						y: 0,
 						z: 0
 					}, 
@@ -74,7 +74,7 @@ var StarSystem = function(config) {
 		
 	})(starsystem);
 	
-	starsystem.Object3D =  function() {
+	starsystem.Object3D =  (function(planets) {
 		
 		var systemOrbit = new OrbitHandler();
 		var starOrbit = new OrbitHandler();
@@ -88,9 +88,18 @@ var StarSystem = function(config) {
 		starOrbit.addObject(star);
 		systemOrbit.addObject(starOrbit);
 
+		for(var i in planets) {
+			var planetOrbit = new OrbitHandler();
+			var planet = new Planet();
+			console.log(planets[i]);
+			planet.position.set(planets[i].position.x, 0, 0);
+			
+			planetOrbit.addObject(planet);
+			starOrbit.addObject(planetOrbit);
+		}
 		
 		return systemOrbit;
-	};
+	})(starsystem.planets);
 	
 	return starsystem;
 };
