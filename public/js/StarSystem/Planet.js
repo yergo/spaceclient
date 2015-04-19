@@ -1,30 +1,4 @@
-var PlanetTextures = new (function() {
-	pt = this;
-	
-	pt.textures = (function(){
-		result = [];
-		for(var i = 1; i <= 7; i++) {
-			var x = new THREE.ImageUtils.loadTexture('img/textures/planets/0' + i.toString() + '.png');
-			x.wrapS = x.wrapT = THREE.ClampToEdgeWrapping;// THREE.RepeatWrapping;
-			x.minFilter = THREE.LinearFilter;
-			result.push(x);
-		}
-		
-		return result;
-	})();
-	
-	pt.last = 0;
-	pt.random = function() {
-		var i = Math.floor(Math.random() * this.textures.length);
-		return this.textures[i];
-	};
-	
-	pt.next = function() {
-		var n = this.textures.length;
-		(++this.last >= n) && (this.last = 0);
-		return this.textures[this.last];
-	};
-})();
+var PlanetTextures = new Textures('planets', 7);
 
 var Planet = function(seed) {
 
@@ -37,19 +11,20 @@ var Planet = function(seed) {
 		
 		var sphereGeometry = new THREE.SphereGeometry(10 + 100 * Math.random(), 15, 15);
 		var sphereMaterial = new THREE.MeshPhongMaterial({
-//			color: 0x00C000,
 			map: PlanetTextures.next()
 		});
 		sphereMaterial.wrapAround = true;
-		
-		// temp
-//		sphereMaterial.wireframe = true;
 		
 		var sphereMesh = new THREE.Mesh(sphereGeometry, sphereMaterial);
 		sphereMesh.castShadow = true; // planets are casting shadows
 		
 		return sphereMesh;
 	})();
+	
+	planet.addObject = function(elem) {
+		this.objects.push(elem);
+		this.Object3D.add(elem.Object3D);
+	};
 	
 	planet.position = planet.Object3D.position;
 	planet.rotation = planet.Object3D.rotation;

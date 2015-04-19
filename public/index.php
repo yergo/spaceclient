@@ -12,10 +12,11 @@
 		['js', 'socket.io-1.3.4'],
 		['js', 'scene'],
 		
+		['js', 'Utils/Textures'],
 		['js', 'StarSystem/OrbitHandler'],
 		['js', 'StarSystem/Star'],
 		['js', 'StarSystem/Planet'],
-//		['js', 'StarSystem/Moon']
+		['js', 'StarSystem/Moon'],
 
 	];
 	
@@ -59,11 +60,11 @@
 		starOrbit.addObject(star);
 
 		
-		for(var i =1; i <= 7; i++) {
+		for(var i =1; i <= 2; i++) {
 			var planetOrbit = new OrbitHandler();;
 			planetOrbit.position.set(0,0,0);
 			
-			planet = new Planet();
+			var planet = new Planet();
 			planet.position.set(i*1500, 0, 0); // odsunięcie od gwiazdy
 			
 			planetOrbit.addObject(planet);
@@ -76,22 +77,29 @@
 //			planetOrbit.rotationSpeed.y = Math.PI * 2 / 60; // 1 orbita na minute
 			planetOrbit.rotationSpeed.y = Math.PI / 30 / 60 * (0.5 + Math.random()); // 1 orbita na godzinę
 			
+			for(var m = 1; m <= Math.floor(1 + 3 * Math.random()); m++) {
+				var moonOrbit = new OrbitHandler();
+				moonOrbit.position.set(0,0,0);
+				
+				var moon = new Moon();
+				moon.position.set(110 + m * 30, 0, 0);
+				
+				moonOrbit.addObject(moon);
+				moonOrbit.rotation.x += Math.PI * 2 * Math.random(); // odchylenie od poziomu
+				moonOrbit.rotation.z += -0.5 + Math.random(); // odchylenie od poziomu
+				moonOrbit.rotation.y += Math.PI * 2 * Math.random(); // odchylenie od osi y, miejsce staru na orbicie
+				
+				moonOrbit.rotationSpeed.y = 0.1;
+//				planetOrbit.addObject(moonOrbit);
+				planet.addObject(moonOrbit);
+			}
+			
 			starOrbit.addObject(planetOrbit);
 		}
 		
 		systemOrbit.addObject(starOrbit);
 		
 		scene.addObject(systemOrbit);
-		
-		// objects
-//		star.position.set(0,0,0);
-		
-//		planetOne = new Planet();
-//		planetOne.position.set(0, 0, 2000);
-//		star.addObject(planetOne);
-//		
-//		scene.addObject(star);
-		
 		
 		function animate() {
 			requestAnimationFrame(animate);

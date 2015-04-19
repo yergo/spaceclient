@@ -13,6 +13,7 @@ function Scene( ) {
 	document.body.appendChild( this.renderer.domElement );
 
 	var ambientLight = new THREE.AmbientLight( 0x000000 );
+//	ambientLight = new THREE.AmbientLight( 0xffffff );
 	this.scene.add( ambientLight );
 
 	this.camera.position.z = 5300;

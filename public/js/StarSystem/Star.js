@@ -14,7 +14,7 @@ var Star = function(seed) {
 		
 		var sphereGeometry = new THREE.SphereGeometry(1000, 30, 30);
 		var sphereMaterial = new THREE.MeshPhongMaterial({
-//			color: 0x505050,
+			color: 0xffffff,
 			map: textureMap,
 			lightMap: lightMap,
 //			glowMap: glow,
@@ -22,14 +22,12 @@ var Star = function(seed) {
 		});
 
 		// temp
-//		sphereMaterial.wireframe = true;
 		sphereMaterial.emissive = new THREE.Color(15,15,15);
 		
 		var sphereMesh = new THREE.Mesh(sphereGeometry, sphereMaterial);
 		sphereMesh.castShadow = false; // stars are not casting shadows
 		
 		var light = new THREE.PointLight(0xffffff, 1, 100000);
-//		var light = new THREE.PointLight(0xf4ff75, 1, 0);
 		light.position.set(0, 0, 0);
 
 		sphereMesh.add(light);
