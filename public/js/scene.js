@@ -3,9 +3,7 @@ function Scene( ) {
 	this.scene = new THREE.Scene();
 	this.camera = new THREE.PerspectiveCamera( 90, window.innerWidth / window.innerHeight, 0.1, 150000 );
 	this.controls = new THREE.OrbitControls( this.camera );
-	
-	this.clock = new THREE.Clock(true);
-	
+		
 	this.renderer = new THREE.WebGLRenderer({
 		antialias: true
 	});
@@ -19,20 +17,8 @@ function Scene( ) {
 	this.camera.position.z = 5300;
 }
 
-Scene.prototype.objects = [];
-
-Scene.prototype.addObject = function(elem) {
-
-	this.objects.push(elem);
-	this.scene.add(elem.Object3D);
-};
-
 Scene.prototype.render = function() {
 	this.controls.update();
-	for(var i in this.objects) {
-		this.objects[i].animate(this.clock.getDelta());
-	}
-
 	this.renderer.render(this.scene, this.camera);
 };
 
@@ -46,4 +32,3 @@ Scene.prototype.refreshSize = function() {
 	this.renderer.setSize( window.innerWidth, window.innerHeight );
 	
 };
-
